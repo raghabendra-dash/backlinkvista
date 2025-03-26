@@ -17,15 +17,24 @@ import cors from "cors";
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000;
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://backlinkvista.vercel.app"
+]; 
+
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(cors({
-  origin: "http://localhost:5173", 
-  credentials: true, 
-}));
+
+app.use(
+  cors({
+      origin: allowedOrigins,
+      credentials: true,
+  })
+);
 
 app.use("/api/auth", authRoute);
 app.use("/api/marketplace", websiteRoute);
