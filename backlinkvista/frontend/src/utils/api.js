@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "https://backlinkvista-webservice.onrender.com";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -105,8 +105,11 @@ export const endpoints = {
     removeFromCart: (websiteId, userId) => 
       api.delete(`/api/marketplace/cart/remove/${websiteId}`, { data: { userId } }),
     checkout: (cartItems) => api.post("/api/marketplace/checkout", { items: cartItems }),
-    getCartItems: (userId) => api.get(`/api/marketplace/cart/${userId}`),
-    getCartCount: (userId) => api.get(`/api/marketplace/cart/${userId}/count`),
+    // getCartItems: (userId) => api.get(`/api/marketplace/cart/${userId}`),
+    // getCartCount: (userId) => api.get(`/api/marketplace/cart/${userId}/count`),
+    getCartItems: (userId) => api.get(`/api/marketplace/cart/get-cart/${userId}`),
+    getCartCount: (userId) => api.get(`/api/marketplace/cart/${userId}/total`),
+
     clearCart: (userId) => api.delete(`/api/marketplace/cart/${userId}`),
   },
   // ... other endpoints remain the same but ensure /api prefix
