@@ -5,15 +5,18 @@
   "description": "this is link publisher app",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install && npm install --prefix ../frontend && npm run build --prefix ../frontend"
+      "start": "node index.js",
+      "dev": "nodemon index.js",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "install:frontend": "cd ../frontend && npm install",
+      "build:frontend": "cd ../frontend && npm run build"
   },
+  
   "keywords": [
     "link",
     "publisher"
   ],
-  "author": "Virender Singh",
+  "author": "Raghabendra Dash",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",
