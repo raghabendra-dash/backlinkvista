@@ -1,22 +1,21 @@
 import express from "express";
 import {
-  addItemToCart,
+  addToCart,       // ✅ Fixed name
   getCartItems,
-  getTotalCartItems,
-  deleteCartItem,
+  removeFromCart,  // ✅ Fixed name
   clearCart
 } from "../controllers/cart.controller.js";
 
 const router = express.Router();
 
-
-router.post("/add", addItemToCart);
+router.post("/add", addToCart); // ✅ Fixed function name
 
 router.get("/get-cart/:userId", getCartItems);
 
-router.get("/:userId/total", getTotalCartItems);
+// ❌ Remove or implement getTotalCartItems in cart.controller.js
+// router.get("/:userId/total", getTotalCartItems);  
 
-router.delete("/remove/:websiteId", deleteCartItem);
+router.delete("/remove/:websiteId", removeFromCart); // ✅ Fixed function name
 
 router.get("/clear/:userId", clearCart);
 
